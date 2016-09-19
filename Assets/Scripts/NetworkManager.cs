@@ -2,7 +2,6 @@
 using System.Collections;
 using Photon;
 
-
 public class NetworkManager : PunBehaviour
 {
 
@@ -14,9 +13,12 @@ public class NetworkManager : PunBehaviour
         ConnectToServer();
     }
 
+    // Update is called once per frame
     void ConnectToServer()
     {
+
         PhotonNetwork.ConnectUsingSettings(VERSION);
+
     }
 
     void OnGUI()
@@ -24,7 +26,7 @@ public class NetworkManager : PunBehaviour
         GUILayout.Label(PhotonNetwork.connectionState.ToString());
     }
 
-    void OnJoinLobby()
+    void OnJoinedLobby()
     {
         PhotonNetwork.JoinRandomRoom();
     }
@@ -37,6 +39,6 @@ public class NetworkManager : PunBehaviour
 
     void OnJoinedRoom()
     {
-        // Do nothing
+        Debug.Log("Joined Room!");
     }
 }
