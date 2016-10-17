@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 7c0b453bdf725a74c967277811b9e77b
+timeCreated: 1476734088
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Back Rest
+    100002: Back Seat Holder
+    100004: Base
+    100006: Butt Rest
+    100008: Camera
+    100010: //RootNode
+    100012: Height Adjustment
+    100014: Lamp
+    100016: Left Hand Holder
+    100018: Left Handle
+    100020: Right Hand Holder
+    100022: Right Handle
+    100024: Seat Holder
+    100026: Wheel 1
+    100028: Wheel 2
+    100030: Wheel 3
+    100032: Wheel 4
+    100034: Wheel 5
+    400000: Back Rest
+    400002: Back Seat Holder
+    400004: Base
+    400006: Butt Rest
+    400008: Camera
+    400010: //RootNode
+    400012: Height Adjustment
+    400014: Lamp
+    400016: Left Hand Holder
+    400018: Left Handle
+    400020: Right Hand Holder
+    400022: Right Handle
+    400024: Seat Holder
+    400026: Wheel 1
+    400028: Wheel 2
+    400030: Wheel 3
+    400032: Wheel 4
+    400034: Wheel 5
+    2300000: Back Rest
+    2300002: Back Seat Holder
+    2300004: Base
+    2300006: Butt Rest
+    2300008: Height Adjustment
+    2300010: Left Hand Holder
+    2300012: Left Handle
+    2300014: Right Hand Holder
+    2300016: Right Handle
+    2300018: Seat Holder
+    2300020: Wheel 1
+    2300022: Wheel 2
+    2300024: Wheel 3
+    2300026: Wheel 4
+    2300028: Wheel 5
+    3300000: Back Rest
+    3300002: Back Seat Holder
+    3300004: Base
+    3300006: Butt Rest
+    3300008: Height Adjustment
+    3300010: Left Hand Holder
+    3300012: Left Handle
+    3300014: Right Hand Holder
+    3300016: Right Handle
+    3300018: Seat Holder
+    3300020: Wheel 1
+    3300022: Wheel 2
+    3300024: Wheel 3
+    3300026: Wheel 4
+    3300028: Wheel 5
+    4300000: Wheel 5
+    4300002: Wheel 4
+    4300004: Wheel 3
+    4300006: Wheel 2
+    4300008: Wheel 1
+    4300010: Left Handle
+    4300012: Right Handle
+    4300014: Back Rest
+    4300016: Left Hand Holder
+    4300018: Right Hand Holder
+    4300020: Seat Holder
+    4300022: Height Adjustment
+    4300024: Butt Rest
+    4300026: Back Seat Holder
+    4300028: Base
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
