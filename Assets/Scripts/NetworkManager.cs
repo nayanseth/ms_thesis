@@ -26,7 +26,7 @@ public class NetworkManager : PunBehaviour
         GUILayout.Label(PhotonNetwork.connectionState.ToString());
     }
 
-    void OnJoinedLobby()
+	public override void OnJoinedLobby()
     {
         PhotonNetwork.JoinRandomRoom();
     }
@@ -37,7 +37,7 @@ public class NetworkManager : PunBehaviour
         PhotonNetwork.CreateRoom(null);
     }
 
-    void OnJoinedRoom()
+	public override void OnJoinedRoom()
     {
         Debug.Log("Joined Room!");
     }
