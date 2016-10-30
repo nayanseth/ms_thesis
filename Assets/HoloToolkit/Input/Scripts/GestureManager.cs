@@ -24,6 +24,9 @@ namespace HoloToolkit.Unity
         /// <summary>
         /// Occurs when a manipulation gesture has started
         /// </summary>
+
+		private string PreviousObject;
+
         public System.Action ManipulationStarted;
 
         /// <summary>
@@ -93,6 +96,8 @@ namespace HoloToolkit.Unity
 
         void Start()
         {
+			PreviousObject = null;
+			
             InteractionManager.SourcePressed += InteractionManager_SourcePressed;
             InteractionManager.SourceReleased += InteractionManager_SourceReleased;
             InteractionManager.SourceUpdated += InteractionManager_SourceUpdated;
@@ -154,9 +159,16 @@ namespace HoloToolkit.Unity
 
         private void OnTap()
         {
-            if (FocusedObject != null)
+			if (FocusedObject != null && PreviousObject == null && FocusedObject.GetComponent<PerformAction>().GotTransform == false)
+			{
+				PreviousObject = FocusedObject.name;
+				FocusedObject.SendMessage("ObjectAction",FocusedObject.name);
+
+			} else if (FocusedObject != null && FocusedObject.name == PreviousObject && FocusedObject.GetComponent<PerformAction>().GotTransform == true)
             {
-                FocusedObject.SendMessage("OnSelect");
+				PreviousObject = null;
+				FocusedObject.SendMessage("ObjectAction",FocusedObject.name);
+
             }
         }
 
