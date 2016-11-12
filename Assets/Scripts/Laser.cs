@@ -26,16 +26,16 @@ public class Laser : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
-            print("Collider hit: " + hit.collider);
+            //print("Collider hit: " + hit.collider);
             if (hit.collider)
             {
-                print("Cube found at " + hit.point + "with normal " + hit.normal);
+                //print("Cube found at " + hit.point + "with normal " + hit.normal);
                 line.SetPosition(1, new Vector3(transform.rotation.x, 0, hit.distance));
             }
         }
         else
         {
-            print("No Collider");
+            //print("No Collider");
             line.SetPosition(1, new Vector3(transform.rotation.x, 0, 10000));
         }
     }
