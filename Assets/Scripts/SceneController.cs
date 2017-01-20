@@ -36,9 +36,9 @@ public class SceneController : MonoBehaviour {
 		if (PhotonNetwork.inRoom) {
 			switch (counter) {
 
-			case 0:
-				flag = false;
-				break;
+			    case 0:
+				    flag = false;
+				    break;
 			}
 		}
 	}
