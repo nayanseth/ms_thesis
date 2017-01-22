@@ -7,9 +7,10 @@ public class RPCManager : MonoBehaviour {
     ParticleSystemRenderer pRenderer;
     GameObject chair;
     GameObject temp;
+    PhotonView photonView;
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         counter = GameObject.Find("Managers").GetComponent<SceneController>().counter;
         pRenderer = GameObject.Find("Proposed Placement Trigger").GetComponent<ParticleSystemRenderer>();
         chair = GameObject.Find("Chair");
@@ -52,9 +53,15 @@ public class RPCManager : MonoBehaviour {
 			    temp = GameObject.Find ("Base");
                 temp.transform.position = new Vector3(0f, -1f, 5f);
                 temp.transform.parent = chair.transform;
-			    break;
+                break;
 		    default:
 			    break;
 		}
+
+    }
+
+    [PunRPC]
+	public void CounterManager() {
+		GameObject.Find ("Managers").GetComponent<SceneController> ().counter++;
 	}
 }
