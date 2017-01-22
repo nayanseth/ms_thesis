@@ -4,6 +4,8 @@ using System.Collections;
 public class TriggerController : MonoBehaviour {
 
 	PhotonView photonView;
+	GameObject temp;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,12 +17,15 @@ public class TriggerController : MonoBehaviour {
 
 			case "Base":
 				//PhotonNetwork.Destroy (other.gameObject);
-				photonView = GameObject.Find ("Base").GetComponent<PhotonView> ();
+				temp = GameObject.Find ("Base");
+				temp.GetComponent<PerformAction>().GotTransform = !temp.GetComponent<PerformAction>().GotTransform;
+				photonView = temp.GetComponent<PhotonView> ();
 				break;
 
 			default:
 				break;
 		}
+
 
 		photonView.RPC ("ModulePositioning", PhotonTargets.All);
 	}

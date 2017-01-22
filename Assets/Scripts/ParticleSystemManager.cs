@@ -7,11 +7,11 @@ public class ParticleSystemManager : MonoBehaviour {
 	ParticleSystem pSystem;
 	ParticleSystemRenderer pRenderer;
 	public Material defaultDiffuse;
-	int counter;
+	//int counter;
 
 	// Use this for initialization
 	void Start () {
-		counter = GameObject.Find ("Managers").GetComponent<SceneController> ().counter;
+		//counter = GameObject.Find ("Managers").GetComponent<SceneController> ().counter;
 
 		proposedPlacementTrigger = GameObject.Find ("Proposed Placement Trigger");
 		pSystem = proposedPlacementTrigger.GetComponent<ParticleSystem> ();

@@ -5,7 +5,7 @@ using HoloToolkit.Unity;
 public class PerformAction : Singleton<PerformAction> {
 
 
-	public bool GotTransform { get; private set; }
+	public bool GotTransform;
 
 	void Start () {
 		GotTransform = false;
