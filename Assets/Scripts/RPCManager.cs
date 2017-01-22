@@ -17,8 +17,22 @@ public class RPCManager : MonoBehaviour {
 		chair = GameObject.Find ("Chair");
 	}
 
-	[PunRPC]
+    void FixedUpdate()
+    {
+        counter = GameObject.Find("Managers").GetComponent<SceneController>().counter;
+    }
+
+    [PunRPC]
 	public void GameObjectNamer() {
+        switch (counter) {
+            case 1:
+                temp = GameObject.Find("Wheel 1(Clone)");
+                temp.name = "Wheel 1";
+                break;
+            default:
+                break;
+
+        }
 	}
 
 	[PunRPC]
@@ -30,7 +44,16 @@ public class RPCManager : MonoBehaviour {
 				pRenderer.mesh = GameObject.Find ("Base").GetComponent<MeshFilter> ().mesh;
 				break;
 
-			default:
+            case 1:
+                temp = GameObject.Find("Wheel 1");
+                proposedPlacementTrigger.GetComponent<MeshCollider>().sharedMesh = temp.GetComponent<MeshFilter>().mesh;
+                proposedPlacementTrigger.transform.rotation = temp.transform.rotation;
+                proposedPlacementTrigger.transform.localScale = temp.transform.localScale;
+                proposedPlacementTrigger.transform.position = new Vector3(1.035f, -0.393f, 5.327f);
+                pRenderer.mesh = temp.GetComponent<MeshFilter>().mesh;
+                break;
+
+            default:
 				break;
 
 		}
@@ -44,10 +67,15 @@ public class RPCManager : MonoBehaviour {
 				temp = GameObject.Find ("Base");
 				temp.transform.position = new Vector3 (0f, -0.3f, 5f);
 				temp.transform.parent = chair.transform;
-				photonView = GameObject.Find ("Base").GetComponent<PhotonView> ();
+				photonView = temp.GetComponent<PhotonView> ();
 				photonView.RPC ("CounterManager", PhotonTargets.All);
 				break;
-			default:
+            case 1:
+                temp = GameObject.Find("Wheel 1");
+                temp.transform.position = proposedPlacementTrigger.transform.position;
+                temp.transform.parent = chair.transform;
+                break;
+            default:
 				break;
 		}
 
@@ -57,6 +85,9 @@ public class RPCManager : MonoBehaviour {
 	[PunRPC]
 	public void CounterManager() {
 		GameObject.Find ("Managers").GetComponent<SceneController> ().counter++;
-	}
+        if(GameObject.Find("Managers").GetComponent<SceneController>().counter%2==0) {
+            GameObject.Find("Managers").GetComponent<SceneController>().flag = true;
+        }
+    }
 
 }

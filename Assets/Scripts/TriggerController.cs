@@ -6,16 +6,11 @@ public class TriggerController : MonoBehaviour {
 	PhotonView photonView;
 	GameObject temp;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
 	void OnTriggerEnter(Collider other) {
 
-		switch (other.gameObject.name) {
+		switch (GameObject.Find("Managers").GetComponent<SceneController>().counter) {
 
-			case "Base":
+			case 0:
 				//PhotonNetwork.Destroy (other.gameObject);
 				temp = GameObject.Find ("Base");
 				temp.GetComponent<PerformAction>().GotTransform = !temp.GetComponent<PerformAction>().GotTransform;

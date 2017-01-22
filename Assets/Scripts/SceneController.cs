@@ -5,7 +5,7 @@ using HoloToolkit.Unity;
 public class SceneController : Singleton<SceneController> {
 
 	public int counter;
-	private bool flag;
+	public bool flag;
 	//ParticleSystemManager manager;
 	PhotonView photonView;
 	//private bool masterFlag;
@@ -44,11 +44,11 @@ public class SceneController : Singleton<SceneController> {
 			switch (counter) {
 
 				case 0:
-					Quaternion rotation = Quaternion.Euler (-89.96101f, 0.0f, 0.0f);
+                    flag = false;
+                    Quaternion rotation = Quaternion.Euler (-89.96101f, 0.0f, 0.0f);
 					GameObject chairBase = PhotonNetwork.Instantiate ("Prefabs/Base", new Vector3 (5f, -0.3f, 5f), rotation, 0) as GameObject;
 					chairBase.name = "Base";
 					chairBase.transform.localScale = new Vector3 (45.0f, 45.0f, 13.6013f);
-					flag = false;
 					photonView = chairBase.GetComponent<PhotonView> ();
 					break;
 				
