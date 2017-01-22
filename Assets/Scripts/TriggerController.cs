@@ -3,26 +3,24 @@ using System.Collections;
 
 public class TriggerController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+	GameObject temp;
+	PhotonView photonView;
 
 	void OnTriggerEnter(Collider other) {
+		Debug.Log ("OnTriggerEnter");
+		switch (GameObject.Find("Managers").GetComponent<SceneController>().counter) {
 
-		switch (other.gameObject.name) {
-
-		    case "Base":
-			    //PhotonNetwork.Destroy (other.gameObject);
-			    break;
-
+			case 1:
+				temp = GameObject.Find ("Wheel 1");
+				print (temp);
+				temp.GetComponent<PerformAction> ().GotTransform = !temp.GetComponent<PerformAction> ().GotTransform;
+				//temp.SendMessage ("ObjectAction", temp.name);
+				photonView = temp.GetComponent<PhotonView> ();
+				break;
 		    default:
 			    break;
 		}
+		Debug.Log ("OnTriggerEnter");
+		photonView.RPC ("ModulePositioning", PhotonTargets.All);
 	}
 }

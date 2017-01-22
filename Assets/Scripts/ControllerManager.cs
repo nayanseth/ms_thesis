@@ -7,9 +7,12 @@ public class ControllerManager : MonoBehaviour {
     SteamVR_TrackedObject trackedObject;
 	SteamVR_Controller.Device device;
 	int counter;
+	GameObject temp;
+	//public bool triggerFlag;
 
     void Awake () {
         trackedObject = this.gameObject.GetComponent<SteamVR_TrackedObject>();
+		//triggerFlag = true;
 	}
 	
 	// Update is called once per frame
@@ -17,8 +20,10 @@ public class ControllerManager : MonoBehaviour {
 		device = SteamVR_Controller.Input ((int)trackedObject.index);
 		counter = GameObject.Find ("Managers").GetComponent<SceneController> ().counter;
 
-		if (device.GetTouch (SteamVR_Controller.ButtonMask.Trigger) && counter%2!=0) {
-			print ("Trigger");
+
+		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Trigger) && counter%2!=0) {
+			temp = this.gameObject.GetComponentInChildren<Laser> ().target;
+			temp.SendMessage ("ObjectAction", temp.name);
 		}
 	}
 }

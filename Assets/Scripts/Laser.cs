@@ -5,6 +5,7 @@ public class Laser : MonoBehaviour
 {
 
     LineRenderer line;
+	public GameObject target;
 
     // Use this for initialization
     void Start()
@@ -29,6 +30,7 @@ public class Laser : MonoBehaviour
             //print("Collider hit: " + hit.collider);
             if (hit.collider)
             {
+				target = hit.transform.gameObject;
                 //print("Cube found at " + hit.point + "with normal " + hit.normal);
                 line.SetPosition(1, new Vector3(transform.rotation.x, 0, hit.distance));
             }
