@@ -57,9 +57,13 @@ public class SceneController : Singleton<SceneController> {
 	                break;
 
 			}
-			//photonView.RPC("GameObjectNamer", PhotonTargets.Others);
-			//photonView.RPC("RendererSettings", PhotonTargets.All);
-			StartCoroutine (RPCFunctions(photonView));
+            //photonView.RPC("GameObjectNamer", PhotonTargets.Others);
+            //photonView.RPC("RendererSettings", PhotonTargets.All);
+            if (GameObject.Find("Managers").GetComponent<SceneController>().counter % 2 == 0) { 
+                StartCoroutine(RPCFunctions(photonView));
+
+            }
+            
 		}
 	}
 

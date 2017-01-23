@@ -68,7 +68,6 @@ public class RPCManager : MonoBehaviour {
 				temp.transform.position = new Vector3 (0f, -0.3f, 5f);
 				temp.transform.parent = chair.transform;
 				photonView = temp.GetComponent<PhotonView> ();
-				photonView.RPC ("CounterManager", PhotonTargets.All);
 				break;
             case 1:
                 temp = GameObject.Find("Wheel 1");
@@ -79,8 +78,21 @@ public class RPCManager : MonoBehaviour {
 				break;
 		}
 
+        if(counter%2==0) {
+
+            StartCoroutine(CounterTrigger(photonView));
+
+        }
+
 
 	}
+
+    IEnumerator CounterTrigger(PhotonView photonView) {
+		photonView.RPC ("CounterManager", PhotonTargets.All);
+		yield return new WaitForSeconds (2f);
+		photonView.RPC ("TriggerManager", PhotonTargets.All);
+	}
+
 
 	[PunRPC]
 	public void CounterManager() {
@@ -89,5 +101,14 @@ public class RPCManager : MonoBehaviour {
             GameObject.Find("Managers").GetComponent<SceneController>().flag = true;
         }
     }
+
+    [PunRPC]
+	public void TriggerManager() {
+		if (counter % 2 == 0) {
+			proposedPlacementTrigger.AddComponent<TriggerController>();
+		} else {
+			Destroy(proposedPlacementTrigger.GetComponent<TriggerController> ());
+		}
+	}
 
 }

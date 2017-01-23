@@ -22,6 +22,9 @@ public class TriggerController : MonoBehaviour {
 		}
 
 
-		photonView.RPC ("ModulePositioning", PhotonTargets.All);
+		if(GameObject.Find("Managers").GetComponent<SceneController>().counter%2==0) {
+			photonView.RPC ("ModulePositioning", PhotonTargets.All);
+	
+		}
 	}
 }
