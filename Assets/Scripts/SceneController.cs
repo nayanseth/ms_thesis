@@ -67,6 +67,13 @@ public class SceneController : Singleton<SceneController>
                     temp.transform.localScale = new Vector3(61.17155f, 61.17165f, 18.48919f);
                     break;
 
+                case 4:
+                    flag = false;
+                    rotation = Quaternion.Euler(-89.96101f, 90.0f, 0.0f);
+                    temp = PhotonNetwork.Instantiate("Prefabs/Left Hand Holder", new Vector3(5f, -1.644f, 5f), rotation, 0) as GameObject;
+                    temp.name = "Left Hand Holder";
+                    temp.transform.localScale = new Vector3(50.66978f, 53.12695f, 4.560347f);
+                    break;
                 default:
                     print("No such case");
                     break;

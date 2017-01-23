@@ -29,6 +29,10 @@ public class RPCManager : MonoBehaviour {
                 temp = GameObject.Find("Wheel 1(Clone)");
                 temp.name = "Wheel 1";
                 break;
+            case 3:
+                temp = GameObject.Find("Seat Holder(Clone)");
+                temp.name = "Seat Holder";
+                break;
             default:
                 break;
 
@@ -53,6 +57,14 @@ public class RPCManager : MonoBehaviour {
                 temp = GameObject.Find("Height Adjustment");
                 proposedPlacementTrigger.transform.position = new Vector3(7.8688e-07f, -0.418f, 4.997f);
                 break;
+            case 3:
+                temp = GameObject.Find("Seat Holder");
+                proposedPlacementTrigger.transform.position = new Vector3(0f, 1.644f, 5f);
+                break;
+            case 4:
+                temp = GameObject.Find("Left Handle Holder");
+                proposedPlacementTrigger.transform.position = new Vector3(0f, 1.644f, 5f);
+                break;
             default:
 				break;
 
@@ -73,6 +85,15 @@ public class RPCManager : MonoBehaviour {
 				break;
             case 1:
                 temp = GameObject.Find("Wheel 1");
+                break;
+            case 2:
+                temp = GameObject.Find("Height Adjustment");
+                break;
+            case 3:
+                temp = GameObject.Find("Seat Holder");
+                break;
+            case 4:
+                temp = GameObject.Find("Left Handle Holder");
                 break;
             default:
 				break;

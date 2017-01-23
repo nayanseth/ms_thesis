@@ -32,9 +32,6 @@ public class PerformAction : Singleton<PerformAction> {
 		switch (sceneObject) {
 
 		    case "Base":
-                GotTransform = !GotTransform;
-                break;
-
             case "Height Adjustment":
                 GotTransform = !GotTransform;
                 break;

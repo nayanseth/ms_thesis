@@ -16,7 +16,9 @@ public class TriggerController : MonoBehaviour {
             case 2:
                 temp = GameObject.Find("Height Adjustment");
                 break;
-
+            case 4:
+                temp = GameObject.Find("Left Handle Holder");
+                break;
 
             default:
 				break;
