@@ -7,20 +7,22 @@ public class TriggerController : MonoBehaviour {
 	PhotonView photonView;
 
 	void OnTriggerEnter(Collider other) {
-		Debug.Log ("OnTriggerEnter");
 		switch (GameObject.Find("Managers").GetComponent<SceneController>().counter) {
 
 			case 1:
+				print ("trigger called");
 				temp = GameObject.Find ("Wheel 1");
-				print (temp);
 				temp.GetComponent<PerformAction> ().GotTransform = !temp.GetComponent<PerformAction> ().GotTransform;
-				//temp.SendMessage ("ObjectAction", temp.name);
 				photonView = temp.GetComponent<PhotonView> ();
 				break;
 		    default:
 			    break;
 		}
-		Debug.Log ("OnTriggerEnter");
-		photonView.RPC ("ModulePositioning", PhotonTargets.All);
+		if(GameObject.Find("Managers").GetComponent<SceneController>().counter%2!=0) {
+			photonView.RPC ("ModulePositioning", PhotonTargets.All);
+	
+		}
+
 	}
+
 }

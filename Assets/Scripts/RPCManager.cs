@@ -72,14 +72,34 @@ public class RPCManager : MonoBehaviour {
 				temp = GameObject.Find ("Wheel 1");
 				temp.transform.position = proposedPlacementTrigger.transform.position;
 				temp.transform.parent = chair.transform;
+				
+				GameObject wheel = PhotonNetwork.Instantiate ("Prefabs/Wheel 2", transform.position, Quaternion.identity, 0) as GameObject;
+				wheel.transform.parent = chair.transform;
+				wheel = PhotonNetwork.Instantiate ("Prefabs/Wheel 3", transform.position, Quaternion.identity, 0) as GameObject;
+				wheel.transform.parent = chair.transform;
+				wheel = PhotonNetwork.Instantiate ("Prefabs/Wheel 4", transform.position, Quaternion.identity, 0) as GameObject;
+				wheel.transform.parent = chair.transform;
+				wheel = PhotonNetwork.Instantiate ("Prefabs/Wheel 5", transform.position, Quaternion.identity, 0) as GameObject;
+				wheel.transform.parent = chair.transform;
+
 				photonView = temp.GetComponent<PhotonView> ();
-				photonView.RPC ("CounterManager", PhotonTargets.All);
+				
 				break;
 		    default:
 			    break;
 		}
+		if (counter % 2 != 0) {
+			StartCoroutine (CounterTrigger(photonView));
+		}
 
     }
+
+	IEnumerator CounterTrigger(PhotonView photonView) {
+		photonView.RPC ("CounterManager", PhotonTargets.All);
+		yield return new WaitForSeconds (2f);
+		photonView.RPC ("TriggerManager", PhotonTargets.All);
+	}
+
 
     [PunRPC]
 	public void CounterManager() {
@@ -88,6 +108,16 @@ public class RPCManager : MonoBehaviour {
 			GameObject.Find ("Managers").GetComponent<SceneController> ().flag = true;
 		} else {
 			GameObject.Find ("Managers").GetComponent<SceneController> ().flag = false;
+		}
+	}
+
+	[PunRPC]
+	public void TriggerManager() {
+		print ("Trigger Manager");
+		if (counter % 2 != 0) {
+			proposedPlacementTrigger.AddComponent<TriggerController> ();
+		} else {
+			Destroy(proposedPlacementTrigger.GetComponent<TriggerController> ());
 		}
 	}
 }
