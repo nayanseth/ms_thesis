@@ -31,14 +31,17 @@ public class PerformAction : Singleton<PerformAction> {
 
 		switch (sceneObject) {
 
-		case "Base":
-			// Note that we have a transform.
-			GotTransform = !GotTransform;
-			break;
-		
-		default:
-			print ("No such object found in the scene!");
-			break;
+		    case "Base":
+                GotTransform = !GotTransform;
+                break;
+
+            case "Height Adjustment":
+                GotTransform = !GotTransform;
+                break;
+
+            default:
+			    print ("No such object found in the scene!");
+			    break;
 		
 		}
 	}

@@ -41,65 +41,76 @@ public class RPCManager : MonoBehaviour {
 		switch (counter) {
 
 			case 0:
-				pRenderer.mesh = GameObject.Find ("Base").GetComponent<MeshFilter> ().mesh;
+                temp = GameObject.Find("Base");
+                //pRenderer.mesh = GameObject.Find ("Base").GetComponent<MeshFilter> ().mesh;
 				break;
 
             case 1:
                 temp = GameObject.Find("Wheel 1");
-                proposedPlacementTrigger.GetComponent<MeshCollider>().sharedMesh = temp.GetComponent<MeshFilter>().mesh;
-                proposedPlacementTrigger.transform.rotation = temp.transform.rotation;
-                proposedPlacementTrigger.transform.localScale = temp.transform.localScale;
                 proposedPlacementTrigger.transform.position = new Vector3(1.035f, -0.393f, 5.327f);
-                pRenderer.mesh = temp.GetComponent<MeshFilter>().mesh;
                 break;
-
+            case 2:
+                temp = GameObject.Find("Height Adjustment");
+                proposedPlacementTrigger.transform.position = new Vector3(7.8688e-07f, -0.418f, 4.997f);
+                break;
             default:
 				break;
 
 		}
 
-	}
+        proposedPlacementTrigger.GetComponent<MeshCollider>().sharedMesh = temp.GetComponent<MeshFilter>().mesh;
+        proposedPlacementTrigger.transform.rotation = temp.transform.rotation;
+        proposedPlacementTrigger.transform.localScale = temp.transform.localScale;
+        pRenderer.mesh = temp.GetComponent<MeshFilter>().mesh;
+
+    }
 
 	[PunRPC]
 	public void ModulePositioning() {
 		switch (counter) {
 			case 0:
 				temp = GameObject.Find ("Base");
-				temp.transform.position = new Vector3 (0f, -0.3f, 5f);
-				temp.transform.parent = chair.transform;
-				photonView = temp.GetComponent<PhotonView> ();
 				break;
             case 1:
                 temp = GameObject.Find("Wheel 1");
-                temp.transform.position = proposedPlacementTrigger.transform.position;
-                temp.transform.parent = chair.transform;
                 break;
             default:
 				break;
 		}
 
-        if(counter%2==0) {
+        temp.transform.position = proposedPlacementTrigger.transform.position;
+        temp.transform.parent = chair.transform;
+        photonView = temp.GetComponent<PhotonView>();
 
-            StartCoroutine(CounterTrigger(photonView));
+        if (counter%2==0) {
+
+            photonView.RPC("CounterFlagManager", PhotonTargets.All);
+            //StartCoroutine(CounterFlagTrigger(photonView));
 
         }
 
 
 	}
 
-    IEnumerator CounterTrigger(PhotonView photonView) {
-		photonView.RPC ("CounterManager", PhotonTargets.All);
-		yield return new WaitForSeconds (2f);
-		photonView.RPC ("TriggerManager", PhotonTargets.All);
-	}
+    /*
+    IEnumerator CounterFlagTrigger(PhotonView photonView) {
+        
+        
+        photonView.RPC("CounterFlagManager", PhotonTargets.All);
+        yield return new WaitForSeconds(2f);
+        photonView.RPC("TriggerManager", PhotonTargets.All);
+    }
+    */
 
 
 	[PunRPC]
-	public void CounterManager() {
+	public void CounterFlagManager() {
 		GameObject.Find ("Managers").GetComponent<SceneController> ().counter++;
         if(GameObject.Find("Managers").GetComponent<SceneController>().counter%2==0) {
             GameObject.Find("Managers").GetComponent<SceneController>().flag = true;
-        }
+        } else {
+			GameObject.Find ("Managers").GetComponent<SceneController> ().flag = false;
+		}
     }
 
     [PunRPC]

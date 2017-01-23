@@ -11,20 +11,26 @@ public class TriggerController : MonoBehaviour {
 		switch (GameObject.Find("Managers").GetComponent<SceneController>().counter) {
 
 			case 0:
-				//PhotonNetwork.Destroy (other.gameObject);
 				temp = GameObject.Find ("Base");
-				temp.GetComponent<PerformAction>().GotTransform = !temp.GetComponent<PerformAction>().GotTransform;
-				photonView = temp.GetComponent<PhotonView> ();
 				break;
+            case 2:
+                temp = GameObject.Find("Height Adjustment");
+                break;
 
-			default:
+
+            default:
 				break;
 		}
 
+        if(temp && temp.GetComponent<PerformAction>().GotTransform) { 
+            temp.GetComponent<PerformAction>().GotTransform = !temp.GetComponent<PerformAction>().GotTransform;
+            photonView = temp.GetComponent<PhotonView>();
 
-		if(GameObject.Find("Managers").GetComponent<SceneController>().counter%2==0) {
-			photonView.RPC ("ModulePositioning", PhotonTargets.All);
+
+            if (GameObject.Find("Managers").GetComponent<SceneController>().counter%2==0) {
+			    photonView.RPC ("ModulePositioning", PhotonTargets.All);
 	
-		}
+		    }
+        }
 	}
 }

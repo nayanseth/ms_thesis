@@ -159,7 +159,7 @@ namespace HoloToolkit.Unity
 
         private void OnTap()
         {
-			if (FocusedObject != null && PreviousObject == null && FocusedObject.GetComponent<PerformAction>().GotTransform == false)
+            /*if (FocusedObject != null && PreviousObject == null && FocusedObject.GetComponent<PerformAction>().GotTransform == false)
 			{
 				PreviousObject = FocusedObject.name;
 				FocusedObject.SendMessage("ObjectAction",FocusedObject.name);
@@ -169,6 +169,12 @@ namespace HoloToolkit.Unity
 				PreviousObject = null;
 				FocusedObject.SendMessage("ObjectAction",FocusedObject.name);
 
+            }*/
+
+            if (FocusedObject != null && FocusedObject.GetComponent<PerformAction>().GotTransform == false && FocusedObject.transform.parent!=GameObject.Find("Chair").transform)
+            {
+                //PreviousObject = FocusedObject.name;
+                FocusedObject.SendMessage("ObjectAction", FocusedObject.name);
             }
         }
 
