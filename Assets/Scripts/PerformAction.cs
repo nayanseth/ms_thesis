@@ -31,7 +31,7 @@ public class PerformAction : MonoBehaviour {
 		switch (sceneObject) {
 
 			case "Wheel 1":
-				// Note that we have a transform.
+			case "Seat Holder":
 				GotTransform = !GotTransform;
 				break;
 

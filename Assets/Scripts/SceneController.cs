@@ -17,10 +17,10 @@ public class SceneController : MonoBehaviour {
 		flag = false;
 		//masterFlag = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-	
+
 		/*
 		if (PhotonNetwork.inRoom && masterFlag) {
 			PhotonNetwork.SetMasterClient (PhotonNetwork.masterClient);
@@ -45,6 +45,17 @@ public class SceneController : MonoBehaviour {
 					temp = PhotonNetwork.Instantiate ("Prefabs/Wheel 1", new Vector3 (5.035f, -0.393f, 5.327f), rotation, 0) as GameObject;
 					temp.name = "Wheel 1";
 					temp.transform.localScale = new Vector3 (2.088205f, 2.088205f, 3.972193f);
+					break;
+
+				case 3:
+					flag = false;
+					rotation = Quaternion.Euler (-89.96101f, 90.0f, 0.0f);
+					temp = PhotonNetwork.Instantiate ("Prefabs/Seat Holder", new Vector3 (5f, 1.644f, 5f), rotation, 0) as GameObject;
+					temp.name = "Seat Holder";
+					temp.transform.localScale = new Vector3 (50.66978f, 53.12695f, 4.560347f);
+					break;
+
+				default:
 					break;
 
 			}

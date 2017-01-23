@@ -17,7 +17,11 @@ public class TriggerController : MonoBehaviour {
 			case 1:
 				temp = GameObject.Find ("Wheel 1");
 				break;
-		    default:
+			case 3:
+				temp = GameObject.Find ("Seat Holder");
+				break;
+
+			default:
 			    break;
 		}
 
