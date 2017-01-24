@@ -34,8 +34,11 @@ public class SceneController : Singleton<SceneController>
 		}
 		*/
         //GameObject.Find("Back Rest(Clone)").GetComponent<PhotonView> ().TransferOwnership(PhotonNetwork.player.ID);
+        if (counter == 11) {
+			Destroy (GameObject.Find ("Proposed Placement Trigger"));
+		}
 
-        if (flag)
+        if (flag && counter<11)
         {
             SceneObjective(counter);
         }
@@ -70,9 +73,30 @@ public class SceneController : Singleton<SceneController>
                 case 4:
                     flag = false;
                     rotation = Quaternion.Euler(-89.96101f, 90.0f, 0.0f);
-                    temp = PhotonNetwork.Instantiate("Prefabs/Left Hand Holder", new Vector3(5f, -1.644f, 5f), rotation, 0) as GameObject;
+                    temp = PhotonNetwork.Instantiate("Prefabs/Left Hand Holder", new Vector3(5f, 1.644f, 5f), rotation, 0) as GameObject;
                     temp.name = "Left Hand Holder";
                     temp.transform.localScale = new Vector3(50.66978f, 53.12695f, 4.560347f);
+                    break;
+                case 6:
+                    flag = false;
+                    rotation = Quaternion.Euler(-89.96101f, 90.0f, 0.0f);
+                    temp = PhotonNetwork.Instantiate("Prefabs/Left Handle", new Vector3(5.019f, 2.035f, 5f), rotation, 0) as GameObject;
+                    temp.name = "Left Handle";
+                    temp.transform.localScale = new Vector3(100f, 100f, 18.84852f);
+                    break;
+                case 8:
+                    flag = false;
+                    rotation = Quaternion.Euler(-89.96101f, 90.0f, 0.0f);
+                    temp = PhotonNetwork.Instantiate("Prefabs/Butt Rest", new Vector3(5.023f, 1.903f, 4.821f), rotation, 0) as GameObject;
+                    temp.name = "Butt Rest";
+                    temp.transform.localScale = new Vector3(100f, 100f, 18.84852f);
+                    break;
+                case 10:
+                    flag = false;
+                    rotation = Quaternion.Euler(0f, 180f, -90.00001f);
+                    temp = PhotonNetwork.Instantiate("Prefabs/Back Rest", new Vector3(5f, 3.75f, 5.977f), rotation, 0) as GameObject;
+                    temp.name = "Back Rest";
+                    temp.transform.localScale = new Vector3(100f, 100f, 18.84852f);
                     break;
                 default:
                     print("No such case");

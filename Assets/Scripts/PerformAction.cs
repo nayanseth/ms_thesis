@@ -6,10 +6,12 @@ public class PerformAction : Singleton<PerformAction> {
 
 
 	public bool GotTransform;
+    GameObject chair;
 
-	void Start () {
+	void Awake () {
 		GotTransform = false;
-	}
+        chair = GameObject.Find("Chair");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,17 +31,23 @@ public class PerformAction : Singleton<PerformAction> {
 
 	void ObjectAction(string sceneObject) {
 
-		switch (sceneObject) {
+        if (GameObject.Find (sceneObject).transform.parent != chair.transform) {
+		    switch (sceneObject) {
 
-		    case "Base":
-            case "Height Adjustment":
-                GotTransform = !GotTransform;
-                break;
+		        case "Base":
+                case "Height Adjustment":
+                case "Left Hand Holder":
+                case "Left Handle":
+                case "Butt Rest":
+                case "Back Rest":
+                    GotTransform = !GotTransform;
+                    break;
 
-            default:
-			    print ("No such object found in the scene!");
-			    break;
+                default:
+			        print ("No such object found in the scene!");
+			        break;
 		
-		}
+		    }
+        }
 	}
 }
