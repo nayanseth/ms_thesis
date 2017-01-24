@@ -28,7 +28,11 @@ public class SceneController : MonoBehaviour {
 		}
 		*/
 
-		if (flag) {
+		if (counter == 11) {
+			Destroy (GameObject.Find ("Proposed Placement Trigger"));
+		}
+
+		if (flag && counter<11) {
 			SceneObjective (counter);
 		}
 
@@ -52,6 +56,27 @@ public class SceneController : MonoBehaviour {
 					rotation = Quaternion.Euler (-89.96101f, 90.0f, 0.0f);
 					temp = PhotonNetwork.Instantiate ("Prefabs/Seat Holder", new Vector3 (5f, 1.644f, 5f), rotation, 0) as GameObject;
 					temp.name = "Seat Holder";
+					temp.transform.localScale = new Vector3 (50.66978f, 53.12695f, 4.560347f);
+					break;
+				case 5:
+					flag = false;
+					rotation = Quaternion.Euler (-89.96101f, 90.0f, 0.0f);
+					temp = PhotonNetwork.Instantiate ("Prefabs/Right Hand Holder", new Vector3 (5f, 1.644f, 5f), rotation, 0) as GameObject;
+					temp.name = "Right Hand Holder";
+					temp.transform.localScale = new Vector3 (50.66978f, 53.12695f, 4.560347f);
+					break;
+				case 7:
+					flag = false;
+					rotation = Quaternion.Euler (-89.96101f, 90.0f, 0.0f);
+					temp = PhotonNetwork.Instantiate ("Prefabs/Right Handle", new Vector3 (5f, 2.04f, 5f), rotation, 0) as GameObject;
+					temp.name = "Right Handle";
+					temp.transform.localScale = new Vector3 (100f, 100f, 18.84852f);
+					break;
+				case 9:
+					flag = false;
+					rotation = Quaternion.Euler (-89.96101f, 90.0f, 0.0f);
+					temp = PhotonNetwork.Instantiate ("Prefabs/Back Seat Holder", new Vector3 (5f, 1.664f, 5f), rotation, 0) as GameObject;
+					temp.name = "Back Seat Holder";
 					temp.transform.localScale = new Vector3 (50.66978f, 53.12695f, 4.560347f);
 					break;
 

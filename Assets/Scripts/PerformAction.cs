@@ -5,9 +5,11 @@ public class PerformAction : MonoBehaviour {
 
 
 	public bool GotTransform;
+	GameObject chair;
 
 	void Awake () {
 		GotTransform = false;
+		chair = GameObject.Find ("Chair");
 	}
 
 	// Update is called once per frame
@@ -28,17 +30,23 @@ public class PerformAction : MonoBehaviour {
 
 	void ObjectAction(string sceneObject) {
 
-		switch (sceneObject) {
+		if (GameObject.Find (sceneObject).transform.parent != chair.transform) {
 
-			case "Wheel 1":
-			case "Seat Holder":
-				GotTransform = !GotTransform;
-				break;
+			switch (sceneObject) {
 
-			default:
-				print ("No such object found in the scene!");
-				break;
+				case "Wheel 1":
+				case "Seat Holder":
+				case "Right Hand Holder":
+				case "Right Handle":
+				case "Back Seat Holder":
+					GotTransform = !GotTransform;
+					break;
 
+				default:
+					print ("No such object found in the scene!");
+					break;
+
+			}
 		}
 	}
 }

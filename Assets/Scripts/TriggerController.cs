@@ -20,7 +20,15 @@ public class TriggerController : MonoBehaviour {
 			case 3:
 				temp = GameObject.Find ("Seat Holder");
 				break;
-
+			case 5:
+				temp = GameObject.Find ("Right Hand Holder");
+				break;
+			case 7:
+				temp = GameObject.Find ("Right Handle");
+				break;
+			case 9:
+				temp = GameObject.Find ("Back Seat Holder");
+				break;
 			default:
 			    break;
 		}

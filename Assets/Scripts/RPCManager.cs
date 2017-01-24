@@ -35,8 +35,20 @@ public class RPCManager : MonoBehaviour {
 				temp.name = "Height Adjustment";
 				break;
 			case 4:
-				temp = GameObject.Find ("Left Handle Holder(Clone)");
-				temp.name = "Left Handle Holder";
+				temp = GameObject.Find ("Left Hand Holder(Clone)");
+				temp.name = "Left Hand Holder";
+				break;
+			case 6:
+				temp = GameObject.Find ("Left Handle(Clone)");
+				temp.name = "Left Handle";
+				break;
+			case 8:
+				temp = GameObject.Find ("Butt Rest(Clone)");
+				temp.name = "Butt Rest";
+				break;
+			case 10:
+				temp = GameObject.Find ("Back Rest(Clone)");
+				temp.name = "Back Rest";
 				break;
 			default:
                 break;
@@ -69,8 +81,32 @@ public class RPCManager : MonoBehaviour {
 				proposedPlacementTrigger.transform.position = new Vector3(0f, 1.644f, 5f);
 				break;
 			case 4:
-				temp = GameObject.Find ("Left Handle Holder");
+				temp = GameObject.Find ("Left Hand Holder");
 				proposedPlacementTrigger.transform.position = new Vector3 (0f, 1.644f, 5f);
+				break;
+			case 5:
+				temp = GameObject.Find ("Right Hand Holder");
+				proposedPlacementTrigger.transform.position = new Vector3 (0f, 1.644f, 5f);
+				break;
+			case 6:
+				temp = GameObject.Find ("Left Handle");
+				proposedPlacementTrigger.transform.position = new Vector3 (0.019f, 2.035f, 5f);
+				break;
+			case 7:
+				temp = GameObject.Find ("Right Handle");
+				proposedPlacementTrigger.transform.position = new Vector3 (-2.88f, 2.04f, 5f);
+				break;
+			case 8:
+				temp = GameObject.Find ("Butt Rest");
+				proposedPlacementTrigger.transform.position = new Vector3 (0.23f, 1.903f, 4.821f);
+				break;
+			case 9:
+				temp = GameObject.Find ("Back Seat Holder");
+				proposedPlacementTrigger.transform.position = new Vector3 (0f, 1.664f, 5f);
+				break;
+			case 10:
+				temp = GameObject.Find ("Back Rest");
+				proposedPlacementTrigger.transform.position = new Vector3 (0f, 3.75f, 5.977f);
 				break;
 			default:
                 break;
@@ -117,9 +153,27 @@ public class RPCManager : MonoBehaviour {
 				temp = GameObject.Find ("Seat Holder");
 				break;
 			case 4:
-				temp = GameObject.Find ("Left Handle Holder");
+				temp = GameObject.Find ("Left Hand Holder");
 				break;
-		    default:
+			case 5:
+				temp = GameObject.Find ("Right Hand Holder");
+				break;
+			case 6:
+				temp = GameObject.Find ("Left Handle");
+				break;
+			case 7:
+				temp = GameObject.Find ("Right Handle");
+				break;
+			case 8:
+				temp = GameObject.Find ("Butt Rest");
+				break;
+			case 9:
+				temp = GameObject.Find ("Back Seat Holder");
+				break;
+			case 10:
+				temp = GameObject.Find ("Back Rest");
+				break;
+			default:
 			    break;
 		}
 		temp.transform.position = proposedPlacementTrigger.transform.position;
