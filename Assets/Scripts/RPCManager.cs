@@ -117,7 +117,18 @@ public class RPCManager : MonoBehaviour {
 		proposedPlacementTrigger.transform.localScale = temp.transform.localScale;
 		pRenderer.mesh = temp.GetComponent<MeshFilter>().mesh;
     }
-    
+
+    [PunRPC]
+	public void HaloManager(string sceneObject, bool haloFlag) {
+		temp = GameObject.Find (sceneObject);
+		Behaviour halo = (Behaviour)temp.GetComponent ("Halo");
+		if (haloFlag) {
+			halo.enabled = haloFlag;
+		} else {
+			halo.enabled = haloFlag;
+		}
+	}
+
     [PunRPC]
 	public void ModulePositioning() {
 		switch (counter) {
@@ -183,7 +194,7 @@ public class RPCManager : MonoBehaviour {
 			photonView.RPC ("CounterFlagManager", PhotonTargets.All);
 			//StartCoroutine (CounterFlagTrigger(photonView));
 		}
-
+        photonView.RPC("HaloManager", PhotonTargets.All, temp.name, false);
     }
 
 	/*

@@ -6,6 +6,7 @@ public class PerformAction : MonoBehaviour {
 
 	public bool GotTransform;
 	GameObject chair;
+    PhotonView photonView;
 
 	void Awake () {
 		GotTransform = false;
@@ -40,7 +41,10 @@ public class PerformAction : MonoBehaviour {
 				case "Right Handle":
 				case "Back Seat Holder":
 					GotTransform = !GotTransform;
-					break;
+                    photonView = GameObject.Find(sceneObject).GetComponent<PhotonView>();
+                    photonView.RPC("HaloManager", PhotonTargets.All, sceneObject, GotTransform);
+
+                    break;
 
 				default:
 					print ("No such object found in the scene!");
