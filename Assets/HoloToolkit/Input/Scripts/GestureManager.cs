@@ -4,6 +4,7 @@
 using UnityEngine;
 using UnityEngine.VR.WSA.Input;
 using System.Collections.Generic;
+using System;
 
 namespace HoloToolkit.Unity
 {
@@ -171,11 +172,15 @@ namespace HoloToolkit.Unity
 
             }*/
 
-            if (FocusedObject != null && FocusedObject.GetComponent<PerformAction>().GotTransform == false && FocusedObject.transform.parent!=GameObject.Find("Chair").transform)
-            {
-                //PreviousObject = FocusedObject.name;
-                FocusedObject.SendMessage("ObjectAction", FocusedObject.name);
-            }
+			try {
+				if (FocusedObject != null && FocusedObject.GetComponent<PerformAction> ().GotTransform == false && FocusedObject.transform.parent != GameObject.Find ("Chair").transform) {
+					//PreviousObject = FocusedObject.name;
+					//(Behaviour)FocusedObject.GetComponent(Halo);
+					FocusedObject.SendMessage ("ObjectAction", FocusedObject.name);
+				}
+			} catch (NullReferenceException e) {
+				print (e.Message);
+			}
         }
 
         private void ManipulationRecognizer_ManipulationStartedEvent(InteractionSourceKind source, Vector3 cumulativeDelta, Ray headRay)

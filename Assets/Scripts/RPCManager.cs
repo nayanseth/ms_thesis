@@ -114,6 +114,17 @@ public class RPCManager : MonoBehaviour {
     }
 
 	[PunRPC]
+	public void HaloManager(string sceneObject, bool haloFlag) {
+		temp = GameObject.Find (sceneObject);
+		Behaviour halo = (Behaviour)temp.GetComponent ("Halo");
+		if (haloFlag) {
+			halo.enabled = haloFlag;
+		} else {
+			halo.enabled = haloFlag;
+		}
+	}
+
+	[PunRPC]
 	public void ModulePositioning() {
 		switch (counter) {
 			case 0:
@@ -163,6 +174,8 @@ public class RPCManager : MonoBehaviour {
             //StartCoroutine(CounterFlagTrigger(photonView));
 
         }
+
+		photonView.RPC("HaloManager", PhotonTargets.All, temp.name, false);
 
 
 	}

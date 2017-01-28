@@ -7,6 +7,7 @@ public class PerformAction : Singleton<PerformAction> {
 
 	public bool GotTransform;
     GameObject chair;
+	PhotonView photonView;
 
 	void Awake () {
 		GotTransform = false;
@@ -34,13 +35,18 @@ public class PerformAction : Singleton<PerformAction> {
         if (GameObject.Find (sceneObject).transform.parent != chair.transform) {
 		    switch (sceneObject) {
 
-		        case "Base":
-                case "Height Adjustment":
-                case "Left Hand Holder":
-                case "Left Handle":
-                case "Butt Rest":
-                case "Back Rest":
-                    GotTransform = !GotTransform;
+				case "Base":
+				case "Height Adjustment":
+				case "Left Hand Holder":
+				case "Left Handle":
+				case "Butt Rest":
+				case "Back Rest":
+					GotTransform = !GotTransform;
+						
+					photonView = GameObject.Find (sceneObject).GetComponent<PhotonView> ();
+					photonView.RPC ("HaloManager", PhotonTargets.All, sceneObject, GotTransform);
+
+					
                     break;
 
                 default:
