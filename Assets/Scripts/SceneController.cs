@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using HoloToolkit.Unity;
+using UnityEngine.UI;
 
 public class SceneController : Singleton<SceneController>
 {
@@ -34,6 +35,12 @@ public class SceneController : Singleton<SceneController>
 		}
 		*/
         //GameObject.Find("Back Rest(Clone)").GetComponent<PhotonView> ().TransferOwnership(PhotonNetwork.player.ID);
+        if (counter % 2 == 0) {
+			GameObject.Find ("Current Controller").GetComponent<Text> ().text = "Your Turn";
+		} else {
+			GameObject.Find ("Current Controller").GetComponent<Text>().text = "Vive's Turn";
+		}
+
         if (counter == 11) {
 			Destroy (GameObject.Find ("Proposed Placement Trigger"));
 		}
