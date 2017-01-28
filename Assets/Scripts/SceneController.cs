@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour {
 
@@ -27,6 +28,12 @@ public class SceneController : MonoBehaviour {
 			masterFlag = false;
 		}
 		*/
+
+		if (counter % 2 == 0) {
+			GameObject.Find ("Current Controller").GetComponent<Text> ().text = "Hololens's Turn";
+		} else {
+			GameObject.Find ("Current Controller").GetComponent<Text>().text = "Your Turn";
+		}
 
 		if (counter == 11) {
 			Destroy (GameObject.Find ("Proposed Placement Trigger"));
