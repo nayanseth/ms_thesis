@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 [RequireComponent(typeof(SteamVR_TrackedObject))]
 public class ControllerManager : MonoBehaviour {
 
@@ -19,11 +19,18 @@ public class ControllerManager : MonoBehaviour {
 	void FixedUpdate () {
 		device = SteamVR_Controller.Input ((int)trackedObject.index);
 		counter = GameObject.Find ("Managers").GetComponent<SceneController> ().counter;
+		temp = this.gameObject.GetComponentInChildren<Laser> ().target;
 
+		try {
 
-		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Trigger) && counter%2!=0) {
-			temp = this.gameObject.GetComponentInChildren<Laser> ().target;
-			temp.SendMessage ("ObjectAction", temp.name);
+			if (device.GetPressDown (SteamVR_Controller.ButtonMask.Trigger) && counter%2!=0 && temp.GetComponent<PerformAction>().GotTransform==false) {
+				temp.SendMessage ("ObjectAction", temp.name);	 
+			}
+		} catch (Exception e){
+			print (e.Message);
 		}
+
+
+
 	}
 }
